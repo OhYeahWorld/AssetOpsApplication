@@ -16,4 +16,5 @@ public interface WashingMachineRepository extends JpaRepository<WashingMachine, 
     // В репозитории добавьте метод:
     @Query("SELECT COALESCE(MAX(w.number), 0) FROM WashingMachine w")
     Long findMaxNumber();
+
 }

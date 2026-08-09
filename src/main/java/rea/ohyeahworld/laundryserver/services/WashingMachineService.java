@@ -40,9 +40,17 @@ public class WashingMachineService {
 
     public WashingMachineDto getMachineByNumber(long number) {
         WashingMachine machine = repository.findByNumber(number);
-        return new WashingMachineDto(machine.getNumber(),
+        if (machine == null) {
+            throw new ResponseStatusException(
+                    HttpStatus.NOT_FOUND,
+                    "Стиральная машина с номером " + number + " не найдена!"
+            );
+        }
+        return new WashingMachineDto(
+                machine.getNumber(),
                 machine.getCondition(),
-                machine.getRemainingTime());
+                machine.getRemainingTime()
+        );
     }
 
     public WashingMachineDto getMachineById(String id) {
@@ -222,5 +230,24 @@ public class WashingMachineService {
                     "Стиральная машина с номером " + num + " не найдена!"
             );
         }
+    }
+
+    public void deleteMachineById(String id) {
+        repository.deleteById(id);
+    }
+
+    public void deleteMachineByNum(Long num) {
+        WashingMachine machine = repository.findByNumber(num);
+
+        if (machine != null) {
+            repository.delete(machine);
+        }
+        else {
+            throw new ResponseStatusException(
+                HttpStatus.NOT_FOUND,
+                "Стиральная машина с номером " + num + " не найдена!"
+            );
+        }
+
     }
 }
