@@ -37,7 +37,37 @@ public class WashingMachineController {
     }
 
     @GetMapping("/byNum/{number}")
-    public WashingMachineDto getMachineById(@PathVariable long number) {
+    public WashingMachineDto getMachineByNumber(@PathVariable long number) {
         return service.getMachineByNumber(number);
+    }
+
+    @PutMapping("/pauseMachineByNum/{num}")
+    public WashingMachineDto pauseMachine(@PathVariable long num) {
+        return service.pauseMachineByNum(num);
+    }
+
+    @PutMapping("/resumeMachineByNum/{num}")
+    public WashingMachineDto resumeMachine(@PathVariable long num) {
+        return service.resumeMachineByNum(num);
+    }
+
+    @PutMapping("/pauseMachineById/{id}")
+    public WashingMachineDto pauseMachineById(@PathVariable String id) {
+        return service.pauseMachineById(id);
+    }
+
+    @PutMapping("/resumeMachineById/{id}")
+    public WashingMachineDto resumeMachineById(@PathVariable String id) {
+        return service.resumeMachineById(id);
+    }
+
+    @PutMapping("/reserveMachineById/{id}")
+    public WashingMachineDto reserveMachineById(@PathVariable String id) {
+        return service.reserveMachineById(id);
+    }
+
+    @PutMapping("/reserveMachineByNum/{num}")
+    public WashingMachineDto reserveMachineByNum(@PathVariable Long num) {
+        return service.reserveMachineByNum(num);
     }
 }

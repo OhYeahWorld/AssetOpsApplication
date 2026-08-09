@@ -2,20 +2,21 @@ package rea.ohyeahworld.laundryserver.entities;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import rea.ohyeahworld.laundryserver.enums.MachineCondition;
 
-import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Entity
 @Table(name = "washing_machine")
 @Getter
 @Setter
-@NoArgsConstructor
 @EnableJpaAuditing
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class WashingMachine {
     @Id
     @Column(name = "id", nullable = false)
@@ -24,6 +25,7 @@ public class WashingMachine {
 
     @Column(name = "machine_condition", nullable = false)
     @NotNull
+    @Enumerated(EnumType.STRING)
     private MachineCondition condition;
 
     @Column(name = "number", nullable = false)
@@ -34,6 +36,8 @@ public class WashingMachine {
     private Long remainingTime;
 
     public WashingMachine(Long number) {
+        this.id = UUID.randomUUID().toString();
         this.number = number;
+        this.condition = MachineCondition.AVAILABLE;
     }
 }
