@@ -6,7 +6,8 @@ import rea.ohyeahworld.laundryserver.services.WashingMachineService;
 
 import java.util.List;
 
-@RestController("/laundry")
+@RestController
+@RequestMapping("/laundry")
 public class WashingMachineController {
     private WashingMachineService service;
 

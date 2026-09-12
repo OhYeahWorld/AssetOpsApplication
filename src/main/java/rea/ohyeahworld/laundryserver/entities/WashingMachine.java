@@ -35,6 +35,10 @@ public class WashingMachine {
     @Column(name = "remaining_time", nullable = true)
     private Long remainingTime;
 
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private Users owner;
+
     public WashingMachine(Long number) {
         this.id = UUID.randomUUID().toString();
         this.number = number;
