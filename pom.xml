@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>rea.ohyeahworld</groupId>
-    <artifactId>LaundryServer</artifactId>
+    <artifactId>assetops</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>LaundryServer</name>
-    <description>LaundryServer</description>
+    <name>AssetOps</name>
+    <description>Industrial equipment and maintenance management API</description>
     <url/>
     <licenses>
         <license/>
